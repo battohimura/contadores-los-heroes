@@ -1,0 +1,76 @@
+/* Form Styles */
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--label-color);
+  font-size: 0.9rem;
+  opacity: 1;
+  letter-spacing: 0.025em;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 0.375rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  color: var(--text);
+  background: var(--input-bg);
+  border-color: var(--input-focus);
+  outline: 0;
+  box-shadow: var(--input-shadow);
+}
+
+.form-control::placeholder {
+  color: var(--secondary);
+  opacity: 1;
+}
+
+.form-control:disabled {
+  background: var(--light);
+  opacity: 1;
+}
+
+/* Validation states */
+.is-valid {
+  border-color: var(--success);
+}
+
+.is-invalid {
+  border-color: var(--danger);
+}
+
+.invalid-feedback {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--danger);
+}
+
+/* Form field container */
+.form-field {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Input wrapper for proper containment */
+.input-wrapper {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}

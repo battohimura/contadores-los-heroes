@@ -1,0 +1,149 @@
+
+/* Dark Theme Only */
+:root {
+  /* Colors */
+  --primary: #0d6efd;
+  --secondary: #6c757d;
+  --success: #198754;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --info: #0dcaf0;
+  --light: #343a40;
+  --dark: #f8f9fa;
+  
+  /* Background & Text */
+  --bg: #121212;
+  --text: #f8f9fa;
+  --border: #495057;
+  
+  /* Components */
+  --card-bg: #1e1e1e;
+  --card-border: rgba(255, 255, 255, 0.125);
+  --modal-bg: #2d2d2d;
+  --modal-backdrop: rgba(0, 0, 0, 0.8);
+  
+  /* Forms */
+  --input-bg: #2d2d2d;
+  --input-border: #495057;
+  --input-focus: #86b7fe;
+  --input-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  --label-color: #e5e7eb;
+  
+  /* Button variants */
+  --btn-primary-hover: #0b5ed7;
+  --btn-primary-border: #0a58ca;
+}
+
+.card-header {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Base Styles */
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: all 0.3s ease;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid-1 { grid-template-columns: 1fr; }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+@media (max-width: 991px) {
+  .grid-3 { 
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Flex utilities */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 1rem; }
+
+/* Text utilities */
+.text-center { text-align: center; }
+.text-primary { color: var(--primary); }
+.text-muted { color: var(--secondary); }
+
+/* Cursor utilities */
+.cursor-pointer { cursor: pointer; }
+
+/* Spacing */
+.p-4 { padding: 1rem; }
+.py-5 { padding: 3rem 0; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.me-2 { margin-right: 0.5rem; }
+
+/* Additional spacing utilities */
+.p-0 { padding: 0; }
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 1rem; }
+.p-5 { padding: 3rem; }
+
+.m-0 { margin: 0; }
+.m-1 { margin: 0.25rem; }
+.m-2 { margin: 0.5rem; }
+.m-3 { margin: 1rem; }
+.m-4 { margin: 1.5rem; }
+.m-5 { margin: 3rem; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+.mt-5 { margin-top: 3rem; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+
+.ml-0 { margin-left: 0; }
+.ml-1 { margin-left: 0.25rem; }
+.ml-2 { margin-left: 0.5rem; }
+.ml-3 { margin-left: 1rem; }
+
+.mr-0 { margin-right: 0; }
+.mr-1 { margin-right: 0.25rem; }
+.mr-2 { margin-right: 0.5rem; }
+.mr-3 { margin-right: 1rem; }
+
+/* Size */
+.h-full { height: 100%; }
+.w-full { width: 100%; }
+
+/* Padding utilities */
+.py-0 { padding-top: 0; padding-bottom: 0; }
+.py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.py-3 { padding-top: 1rem; padding-bottom: 1rem; }
+.py-4 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+
+.px-0 { padding-left: 0; padding-right: 0; }
+.px-1 { padding-left: 0.25rem; padding-right: 0.25rem; }
+.px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+.px-3 { padding-left: 1rem; padding-right: 1rem; }
+.px-4 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.px-5 { padding-left: 3rem; padding-right: 3rem; }
+
