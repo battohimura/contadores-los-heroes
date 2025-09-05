@@ -20,6 +20,7 @@ export default defineNuxtConfig({
     '~/plugins/vuex.js'
   ],
   app: {
+    baseURL: process.env.NODE_ENV === 'production' ? '/contadores-los-heroes/' : '/',
     head: {
       style: [
         {
