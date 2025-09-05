@@ -1,7 +1,13 @@
 <template>
   <div v-if="isOpen" class="modal__overlay" @click="closeModal">
     <div class="modal__dialog">
-      <div class="modal__content" @click.stop>
+      <div 
+        class="modal__content" 
+        @click.stop
+        @touchstart="handleTouchStart"
+        @touchmove="handleTouchMove"
+        @touchend="handleTouchEnd"
+      >
         <div class="modal__header">
           <slot name="header">
             <h5 class="modal__title">{{ title }}</h5>
@@ -41,6 +47,13 @@ export default {
     }
   },
   emits: ['close'],
+  data() {
+    return {
+      touchStartY: 0,
+      touchCurrentY: 0,
+      isDragging: false
+    }
+  },
   mounted() {
     // Cerrar modal con tecla Escape
     if (import.meta.client) {
@@ -60,6 +73,44 @@ export default {
       if (event.key === 'Escape' && this.isOpen) {
         this.closeModal()
       }
+    },
+    handleTouchStart(event) {
+      if (window.innerWidth <= 575) {
+        this.touchStartY = event.touches[0].clientY
+        this.isDragging = true
+      }
+    },
+    handleTouchMove(event) {
+      if (!this.isDragging || window.innerWidth > 575) return
+      
+      this.touchCurrentY = event.touches[0].clientY
+      const deltaY = this.touchCurrentY - this.touchStartY
+      
+      // Only allow downward swipe to close
+      if (deltaY > 0) {
+        const modal = event.currentTarget
+        modal.style.transform = `translateY(${Math.min(deltaY, 100)}px)`
+        modal.style.opacity = Math.max(1 - deltaY / 200, 0.5)
+      }
+    },
+    handleTouchEnd(event) {
+      if (!this.isDragging || window.innerWidth > 575) return
+      
+      const deltaY = this.touchCurrentY - this.touchStartY
+      const modal = event.currentTarget
+      
+      // If swiped down more than 50px, close modal
+      if (deltaY > 50) {
+        this.closeModal()
+      } else {
+        // Reset position
+        modal.style.transform = ''
+        modal.style.opacity = ''
+      }
+      
+      this.isDragging = false
+      this.touchStartY = 0
+      this.touchCurrentY = 0
     }
   }
 }
@@ -86,28 +137,48 @@ export default {
   width: auto;
   margin: 1rem;
   pointer-events: none;
-  max-width: 90vw;
-  min-width: 500px;
+  max-width: 95vw;
+  min-width: 280px;
+}
+
+/* Mobile First Responsive Design */
+@media (max-width: 575px) {
+  .modal__dialog {
+    margin: 0.5rem;
+    max-width: calc(100vw - 1rem);
+    min-width: auto;
+  }
+  
+  .modal__content {
+    border-radius: 0.25rem;
+  }
 }
 
 @media (min-width: 576px) {
   .modal__dialog {
-    max-width: 750px;
-    margin: 2rem auto;
+    max-width: 540px;
+    margin: 1.5rem auto;
+    min-width: 500px;
   }
 }
 
 @media (min-width: 768px) {
   .modal__dialog {
-    max-width: 850px;
-    margin: 3rem auto;
+    max-width: 700px;
+    margin: 2rem auto;
   }
 }
 
 @media (min-width: 992px) {
   .modal__dialog {
-    max-width: 950px;
+    max-width: 800px;
     margin: 3rem auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .modal__dialog {
+    max-width: 900px;
   }
 }
 
@@ -130,12 +201,19 @@ export default {
   flex-shrink: 0;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
   border-bottom: 1px solid var(--border);
   border-top-left-radius: calc(0.5rem - 1px);
   border-top-right-radius: calc(0.5rem - 1px);
   min-height: 3.5rem;
   background-color: var(--card-bg);
+}
+
+@media (max-width: 575px) {
+  .modal__header {
+    padding: 0.75rem 1rem;
+    min-height: 3rem;
+  }
 }
 
 .modal__title {
@@ -148,6 +226,15 @@ export default {
   text-align: left;
   display: flex;
   align-items: center;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 575px) {
+  .modal__title {
+    font-size: 1.1rem;
+    padding-right: 0.5rem;
+  }
 }
 
 .modal__close {
@@ -169,6 +256,18 @@ export default {
   justify-content: center;
   flex-shrink: 0;
   margin-left: 1rem;
+  /* Better touch target for mobile */
+  min-width: 44px;
+  min-height: 44px;
+}
+
+@media (max-width: 575px) {
+  .modal__close {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: 0.5rem;
+    font-size: 1.5rem;
+  }
 }
 
 .modal__close:hover {
@@ -186,8 +285,25 @@ export default {
 .modal__body {
   position: relative;
   flex: 1 1 auto;
-  padding: 2rem;
-  min-height: 200px;
+  padding: 1.5rem;
+  min-height: 150px;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
+@media (max-width: 575px) {
+  .modal__body {
+    padding: 1rem;
+    min-height: 120px;
+    max-height: calc(100vh - 160px);
+  }
+}
+
+@media (min-width: 768px) {
+  .modal__body {
+    padding: 2rem;
+    min-height: 200px;
+  }
 }
 
 .modal__footer {
@@ -196,13 +312,35 @@ export default {
   flex-shrink: 0;
   align-items: center;
   justify-content: flex-end;
-  padding: 1.5rem 2rem;
+  padding: 1rem 1.5rem;
   border-top: 1px solid var(--border);
   border-bottom-right-radius: calc(0.5rem - 1px);
   border-bottom-left-radius: calc(0.5rem - 1px);
-  gap: 1rem;
+  gap: 0.75rem;
   background-color: var(--card-bg);
-  min-height: 4rem;
+  min-height: 3.5rem;
+}
+
+@media (max-width: 575px) {
+  .modal__footer {
+    padding: 0.75rem 1rem;
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+    min-height: auto;
+  }
+  
+  .modal__footer .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal__footer {
+    padding: 1.5rem 2rem;
+    gap: 1rem;
+    min-height: 4rem;
+  }
 }
 
 /* Button Styles */
