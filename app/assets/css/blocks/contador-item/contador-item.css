@@ -1,0 +1,118 @@
+/* Contador Item Block - List Layout */
+.contador-item__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.contador-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  transition: all var(--transition-fast);
+  list-style: none;
+}
+
+.contador-item:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.contador-item__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--space-sm);
+}
+
+.contador-item__nombre {
+  flex: 1;
+  min-width: 0;
+}
+
+.contador-item__name-display {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
+  word-wrap: break-word;
+}
+
+.contador-item__name-display:hover {
+  background-color: var(--bg-secondary);
+}
+
+.contador-item__input {
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+.contador-item__valor {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  min-width: 3rem;
+  text-align: center;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  margin: 0 var(--space-xs);
+}
+
+/* Botones individuales en el layout */
+.contador-item__content .btn {
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .contador-item__content {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+  
+  .contador-item__nombre {
+    flex-basis: 100%;
+    text-align: center;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .contador-item__valor {
+    font-size: 1.5rem;
+    margin: 0 var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .contador-item {
+    padding: var(--space-sm);
+  }
+  
+  .contador-item__content {
+    gap: var(--space-xs);
+  }
+  
+  .contador-item__content .btn {
+    min-width: 2rem;
+    height: 2rem;
+  }
+}

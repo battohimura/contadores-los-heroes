@@ -1,0 +1,79 @@
+/* Contador Block */
+.contador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-lg);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  min-height: 200px;
+  transition: transform var(--transition), box-shadow var(--transition);
+  cursor: pointer;
+}
+
+.contador:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+/* Elements */
+.contador__valor {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: var(--space-md) 0;
+  line-height: 1;
+  transition: all var(--transition);
+}
+
+.contador__actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: auto;
+  justify-content: center;
+}
+
+/* Modifiers */
+.contador--editing .contador__valor {
+  border: 2px dashed var(--primary);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.contador--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.contador--large .contador__valor {
+  font-size: 4rem;
+}
+
+.contador--small {
+  min-height: 150px;
+  padding: var(--space-md);
+}
+
+.contador--small .contador__valor {
+  font-size: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contador {
+    min-height: 150px;
+    padding: var(--space-md);
+  }
+  
+  .contador__valor {
+    font-size: 2.5rem;
+  }
+  
+  .contador--large .contador__valor {
+    font-size: 3rem;
+  }
+}

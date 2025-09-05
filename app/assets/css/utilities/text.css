@@ -1,0 +1,18 @@
+/* Text Utilities */
+
+/* Text Alignment */
+.u-text--center { text-align: center; }
+
+/* Text Colors */
+.u-text--primary { color: var(--primary); }
+.u-text--success { color: var(--success); }
+.u-text--muted { color: var(--text-muted); }
+
+/* Font Weight */
+.u-text--semibold { font-weight: 600; }
+
+/* Font Size */
+.u-text--sm { font-size: 0.875rem; }
+
+/* Cursor */
+.u-cursor--pointer { cursor: pointer; }

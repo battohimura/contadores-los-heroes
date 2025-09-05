@@ -1,0 +1,59 @@
+/* Spacing Utilities */
+
+/* Margin */
+.u-m--none { margin: 0; }
+.u-m--xs { margin: var(--space-xs); }
+.u-m--sm { margin: var(--space-sm); }
+.u-m--md { margin: var(--space-md); }
+.u-m--lg { margin: var(--space-lg); }
+.u-m--xl { margin: var(--space-xl); }
+.u-m--2xl { margin: var(--space-2xl); }
+
+/* Margin Bottom */
+.u-mb--none { margin-bottom: 0; }
+.u-mb--xs { margin-bottom: var(--space-xs); }
+.u-mb--sm { margin-bottom: var(--space-sm); }
+.u-mb--md { margin-bottom: var(--space-md); }
+.u-mb--lg { margin-bottom: var(--space-lg); }
+.u-mb--xl { margin-bottom: var(--space-xl); }
+
+/* Margin End (Right in LTR) */
+.u-me--none { margin-right: 0; }
+.u-me--xs { margin-right: var(--space-xs); }
+.u-me--sm { margin-right: var(--space-sm); }
+.u-me--md { margin-right: var(--space-md); }
+
+/* Margin Horizontal */
+.u-mx--auto { margin-left: auto; margin-right: auto; }
+
+/* Padding */
+.u-p--none { padding: 0; }
+.u-p--xs { padding: var(--space-xs); }
+.u-p--sm { padding: var(--space-sm); }
+.u-p--md { padding: var(--space-md); }
+.u-p--lg { padding: var(--space-lg); }
+.u-p--xl { padding: var(--space-xl); }
+.u-p--2xl { padding: var(--space-2xl); }
+
+/* Padding Top */
+.u-pt--none { padding-top: 0; }
+.u-pt--xs { padding-top: var(--space-xs); }
+.u-pt--sm { padding-top: var(--space-sm); }
+.u-pt--md { padding-top: var(--space-md); }
+
+/* Padding Vertical */
+.u-py--none { padding-top: 0; padding-bottom: 0; }
+.u-py--xs { padding-top: var(--space-xs); padding-bottom: var(--space-xs); }
+.u-py--sm { padding-top: var(--space-sm); padding-bottom: var(--space-sm); }
+.u-py--md { padding-top: var(--space-md); padding-bottom: var(--space-md); }
+.u-py--lg { padding-top: var(--space-lg); padding-bottom: var(--space-lg); }
+.u-py--xl { padding-top: var(--space-xl); padding-bottom: var(--space-xl); }
+
+
+/* Gap utilities for flex/grid */
+.u-gap--none { gap: 0; }
+.u-gap--xs { gap: var(--space-xs); }
+.u-gap--sm { gap: var(--space-sm); }
+.u-gap--md { gap: var(--space-md); }
+.u-gap--lg { gap: var(--space-lg); }
+.u-gap--xl { gap: var(--space-xl); }

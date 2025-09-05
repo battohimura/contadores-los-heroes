@@ -1,0 +1,63 @@
+/* Header Block */
+.header {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  padding: var(--space-sm) 0;
+  min-height: 4rem;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  transition: background-color var(--transition-slow), border-color var(--transition-slow);
+}
+
+.header__nav {
+  padding: var(--space-md) 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3.5rem;
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+}
+
+.header__title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  margin: 0;
+  background: linear-gradient(135deg, var(--primary), var(--info));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+@media (max-width: 768px) {
+  .header__title {
+    font-size: 1.5rem;
+  }
+  
+  .header__nav {
+    padding: var(--space-sm) 0;
+    min-height: 3rem;
+  }
+  
+  .header__actions .btn {
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.75rem;
+  }
+  
+  .header__actions .btn .u-me--sm {
+    display: none;
+  }
+}

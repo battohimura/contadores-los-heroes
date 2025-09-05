@@ -1,0 +1,23 @@
+/* Main CSS - BEM Architecture */
+
+/* Base Styles */
+@import './base/variables.css';
+@import './base/reset.css';
+@import './base/typography.css';
+
+/* Blocks (Components) */
+@import './blocks/btn/btn.css';
+@import './blocks/form/form.css';
+@import './blocks/card/card.css';
+@import './blocks/contador/contador.css';
+@import './blocks/contador-item/contador-item.css';
+@import './blocks/filtros/filtros.css';
+@import './blocks/resumen/resumen.css';
+@import './blocks/modal/modal.css';
+@import './blocks/header/header.css';
+
+/* Utilities */
+@import './utilities/layout.css';
+@import './utilities/spacing.css';
+@import './utilities/text.css';
+@import './utilities/sizing.css';
