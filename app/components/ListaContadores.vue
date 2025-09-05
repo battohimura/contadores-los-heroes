@@ -84,8 +84,13 @@
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import { useToast } from '~/composables/useToast'
 
 export default {
+  setup() {
+    const { showSuccess, showError, showWarning } = useToast()
+    return { showSuccess, showError, showWarning }
+  },
   data() {
     return {
       filtroNombre: '',
@@ -167,8 +172,16 @@ export default {
       editarNombreContador: 'editarNombreContador',
       loadContadores: 'loadContadores'
     }),
-    eliminarContador(id) {
-      this.removeContador(id)
+    async eliminarContador(id) {
+      try {
+        const contador = this.listaContadores.find(c => c.id === id)
+        const nombreContador = contador ? contador.nombre : 'Contador'
+        await this.removeContador(id)
+        this.showSuccess(`"${nombreContador}" eliminado exitosamente`)
+      } catch (error) {
+        console.error('Error al eliminar contador:', error)
+        this.showError('Error al eliminar el contador. Inténtalo de nuevo.')
+      }
     },
     startEdit(id) {
       const contador = this.listaContadores.find(c => c.id === id)
@@ -176,11 +189,18 @@ export default {
         contador.editando = true
       }
     },
-    finishEdit(id) {
+    async finishEdit(id) {
       const contador = this.listaContadores.find(c => c.id === id)
       if (contador) {
-        this.editarNombreContador({ id, nombre: contador.nombre })
-        contador.editando = false
+        try {
+          await this.editarNombreContador({ id, nombre: contador.nombre })
+          contador.editando = false
+          this.showSuccess(`Nombre actualizado a "${contador.nombre}"`)
+        } catch (error) {
+          console.error('Error al editar nombre:', error)
+          this.showError('Error al actualizar el nombre. Inténtalo de nuevo.')
+          contador.editando = false
+        }
       }
     },
     cancelEdit(id) {

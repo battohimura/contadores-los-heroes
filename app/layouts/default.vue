@@ -16,6 +16,7 @@
         />
       </footer>
     </div>
+    <ToastContainer />
   </div>
 </template>
 
@@ -24,12 +25,14 @@ import { mapGetters } from 'vuex'
 import PageLoader from '~/components/ui/PageLoader.vue'
 import AppHeader from '~/components/app/Header.vue'
 import ContadoresResumen from '~/components/ContadoresResumen.vue'
+import ToastContainer from '~/components/ui/ToastContainer.vue'
 
 export default {
   components: {
     PageLoader,
     AppHeader,
-    ContadoresResumen
+    ContadoresResumen,
+    ToastContainer
   },
   data() {
     return {

@@ -30,8 +30,13 @@
 
 <script>
 import { mapActions } from 'vuex'
+import { useToast } from '~/composables/useToast'
 
 export default {
+  setup() {
+    const { showSuccess, showError } = useToast()
+    return { showSuccess, showError }
+  },
   data() {
     return {
       isModalOpen: false
@@ -47,8 +52,14 @@ export default {
     closeModal() {
       this.isModalOpen = false
     },
-    handleNewContador(formData) {
-      this.addContador(formData)
+    async handleNewContador(formData) {
+      try {
+        await this.addContador(formData)
+        this.showSuccess(`Contador "${formData.nombre}" creado exitosamente`)
+      } catch (error) {
+        console.error('Error al crear contador:', error)
+        this.showError('Error al crear el contador. Inténtalo de nuevo.')
+      }
     }
   }
 }
