@@ -22,7 +22,7 @@ Una aplicación web moderna de gestión de contadores construida con Nuxt 3 y Vu
 ### 1. Clonar el repositorio
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/battohimura/contadores-los-heroes.git
 cd contadores-los-heroes
 ```
 
