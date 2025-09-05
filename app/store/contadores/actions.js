@@ -1,11 +1,20 @@
 export default {
-  addContador({ commit }) {
-    commit('addContador');
+  addContador({ commit }, payload) {
+    commit('addContador', payload);
   },
-  removeContador({ commit }, index) {
-    commit('removeContador', index);
+  removeContador({ commit }, id) {
+    commit('removeContador', id);
   },
-  incrementarContador({ commit }, index) {
-    commit('incrementarContador', index);
+  incrementarContador({ commit }, id) {
+    commit('incrementarContador', id);
+  },
+  decrementarContador({ commit }, id) {
+    commit('decrementarContador', id);
+  },
+  editarNombreContador({ commit }, { id, nombre }) {
+    commit('editarNombreContador', { id, nombre });
+  },
+  loadContadores({ commit }) {
+    commit('loadContadores');
   },
 };
