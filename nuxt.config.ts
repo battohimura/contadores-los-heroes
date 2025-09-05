@@ -10,7 +10,12 @@ export default defineNuxtConfig({
     collections: ['heroicons']
   },
   modules: ['@nuxt/eslint', '@nuxt/icon'],
-  ssr: true,
+  ssr: false, // Cambiar a SPA para GitHub Pages
+  nitro: {
+    prerender: {
+      routes: ['/']
+    }
+  },
   plugins: [
     '~/plugins/vuex.js'
   ],
