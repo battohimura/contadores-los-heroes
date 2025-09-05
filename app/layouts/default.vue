@@ -46,29 +46,29 @@ export default {
     }
   },
   mounted() {
-    // Show body immediately with loader
+    // Mostrar el body inmediatamente con el loader
     document.body.classList.add('page-ready')
-    // Wait for fonts and styles to load
+    // Esperar a que las fuentes y estilos se carguen
     this.waitForPageReady()
   },
   methods: {
     async waitForPageReady() {
-      // Wait for document to be ready
+      // Esperar a que el documento esté listo
       if (document.readyState !== 'complete') {
         await new Promise(resolve => {
           window.addEventListener('load', resolve, { once: true })
         })
       }
 
-      // Wait for fonts to load
+      // Esperar a que las fuentes se carguen
       if (document.fonts) {
         await document.fonts.ready
       }
 
-      // Additional delay to ensure CSS is fully applied
+      // Retraso adicional para asegurar que el CSS se aplique completamente
       await new Promise(resolve => setTimeout(resolve, 300))
 
-      // Hide loader
+      // Ocultar el loader
       this.isPageLoading = false
     }
   }
